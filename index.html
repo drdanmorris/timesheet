@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+<script src="../angular.js"></script>
+<script src="../underscore.js"></script>
+<script src="extensions.js"></script>
+<script src="moment.js"></script>
+<script src="main.js"></script>
+<link rel="stylesheet" href="timesheet.css" />
+</head>
+
+<body ng-controller="timesheetController">
+
+
+<div class="import">
+  <h1>Timecode View</h1>
+  <textarea id="datacom" rows="50" cols="95" ng-model="datacomTime"></textarea>
+  <div>
+    <button ng-click="import()">Import</button>
+  </div>
+
+  <div class="report" ng-show="model">
+
+    <table ng-repeat="week in model.weeks">
+      <tr>
+        <th>{{week.from}} - {{week.to}}</th>
+        <th ng-repeat="day in week.days">{{day.day}}<br/>{{day.date}}</th>
+      </tr>
+      <tr ng-repeat="task in week.tasks">
+        <td>{{task.name}}</td>
+        <td ng-repeat="day in task.days">{{day.hours}}</td>
+      </tr>
+    </table>
+
+  </div>
+
+</div>
+
+
+
+
+
+</body>
+</html>
